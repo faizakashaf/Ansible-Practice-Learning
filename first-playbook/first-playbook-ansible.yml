@@ -1,0 +1,6 @@
+--- 
+- name : Installing python
+  hosts: all
+  become: true
+  roles: 
+    - python

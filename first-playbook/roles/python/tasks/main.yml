@@ -1,0 +1,15 @@
+---
+- name: Installing pkges for python env
+  become: yes
+  apt:
+    name: -pyhton3-pip 
+    update_cache: yes
+  
+- name: Create Directory
+  file: 
+    path: ./basic-http-server
+    state: directory
+
+- name: Install Apache2
+  become: yes
+  apt: name=apache2 update_cache=yes state=latest

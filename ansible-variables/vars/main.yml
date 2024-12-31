@@ -1,0 +1,3 @@
+---
+# vars file for second-playbook
+variable_from_var_folder: "Hi I am variable coming from var folder"

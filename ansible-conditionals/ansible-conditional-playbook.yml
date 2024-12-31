@@ -1,0 +1,7 @@
+- name:  Example of ansible conditions and loops
+  hosts: localhost
+  become: true
+  become_method: sudo
+  become_user: root
+  roles:
+    - custom-role

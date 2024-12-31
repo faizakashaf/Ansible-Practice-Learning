@@ -1,0 +1,63 @@
+---
+- name: Learning and accessing Ansible variables
+  hosts: localhost
+  remote_user: ubuntu
+
+  vars_files: vars/main.yml
+  
+  vars:
+  # Accessing string variable
+    my_string_variable: "Hello World, this is me faiza"
+
+  # Accessing boolean variable
+    is_enabled: true
+
+  # Accessing List variable
+    fruits:
+      - apple
+      - mango
+      - orange
+      - banana
+    
+    fruit_prices:
+      apple: 0.5
+      mango: 2.5
+      orange: 4.5
+
+
+
+  tasks:
+  - name: String Variable from - my_string_variable
+    debug:
+      var: my_string_variable
+
+  - name: Boolean Variable 
+    debug:
+      msg: I am boolean variable, hey
+    when: is_enabled
+
+  - name: List variables
+    debug:
+      var: fruits[7]
+  
+  - name: Accessing dictionary variables
+    debug:
+     var: fruit_prices["apple"]
+
+  - name: Storing variable output in register Variable 
+    command: echo "{{ fruit_prices['apple'] }}"
+    register: apple_price_as_register_var
+  
+  - name: Printing register variable value
+    debug:
+      var: apple_price_as_register_var.stdout
+
+  - name: Printing variable coming from var folder
+    debug:
+      var: variable_from_var_folder
+      
+
+
+
+   
+

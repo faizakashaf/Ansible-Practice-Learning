@@ -1,0 +1,23 @@
+---
+- name: Ansible Environment Variable 
+  hosts: localhost
+  remote_user: ubuntu
+
+  environment:
+   VAR1: "FOO"
+   VAR2: "ALRIGHT"
+
+
+  tasks:
+  - name: "Printing environment variables"
+    ansible.builtin.command: "echo $VAR1 $VAR2"
+
+  - name: "Creating new variable inside in new task"
+    environment:
+      INSIDE_VARIABLE: "Inside task variable"
+    ansible.builtin.command: "echo $INSIDE_VARIABLE"
+
+  - name: Accessing all variables global and localhost
+    ansible.builtin.command: "echo $INSIDE_VARIABLE $VAR1 $VAR2"
+
+  

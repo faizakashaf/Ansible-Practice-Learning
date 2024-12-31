@@ -1,0 +1,7 @@
+---
+- name: Error handling task
+  hosts: localhost
+  gather_facts: yes
+  become: true
+  roles:
+    - custom-role

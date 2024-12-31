@@ -1,0 +1,26 @@
+---
+# Installing Apache2 server when condition is true
+- name: Install apache2 webserver
+  apt:
+    name: apache2
+    state: absent
+  when: install_apache_flag
+
+
+# Debugging Ansible_facts
+- name: Debugging Ansible_facts
+  debug:
+    var: ansible_facts['kernel_version']
+  when: ansible_facts['os_family'] == "Debian" and ansible_facts['distribution_major_version'] == "24"
+
+# Register a variable value 
+- name: Storing value in register variable
+  ansible.builtin.command: cat /home/faiza/test.txt
+  register: file_content
+
+- name: Debugging file content of /home/faiza/test.txt
+  debug:
+    var: file_content.stdout
+  when: file_content.stdout.find("hi") != -1
+
+  
