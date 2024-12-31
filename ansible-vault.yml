@@ -1,0 +1,6 @@
+---
+- name: Example Ansible playbook for Vault
+  hosts: localhost
+  become: yes
+  roles:
+    - custom-role
